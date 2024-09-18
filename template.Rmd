@@ -1,21 +1,32 @@
 ---
-title: "Simple document"
-output: html_document
+title: "Data_import"
+output: github_document
 ---
 
-I'm an R Markdown document! 
 
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
-```{r}
-samp = rnorm(100)
-length(samp)
+```{r setup, echo = FALSE, message = FALSE}
+library(tidyverse)
+library(janitor)
 ```
 
-# Section 2
+This documnet will show how to import data. 
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+## Import the FAS Litters CSV
+
+* Get rid of characters, lower case, replace space with underscore
+* clean_name is the only one function in the janitor so I don't need library actually. It works when there are multiple packages use the same function name
+```{r}
+litters_df = read_csv("data_import_examples/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+
+
+## Look at the dataset 
+head(litters_df)
+tail(litters_df,10)
+```{r eval = FALSE}
+view(litters_df)
+
+
+```
+
