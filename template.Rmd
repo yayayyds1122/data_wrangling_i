@@ -27,6 +27,47 @@ tail(litters_df,10)
 ```{r eval = FALSE}
 view(litters_df)
 
+```
+
+## Learning Assessment 
+```{r}
+pups_df = read.csv("data_import_examples/FAS_pups.csv")
+#read.csv("~/Desktop/data_wranging_i/data/FAS_litters.csv")
+pups_df = janitor::clean_names(pups_df)
 
 ```
+
+## Look at read_csv options 
+col_names and skip 
+```{r}
+litters_df = read_csv(
+  file = "data_import_examples/FAS_litters.csv",
+  col_names = FALSE,
+  skip = 1
+)
+```
+what about missing values
+```{r}
+litters_df = 
+  read_csv(
+    file = "data_import_examples/FAS_litters.csv",
+    na = c("NA","",".")
+  )
+
+litters_df = janitor::clean_names(litters_df)
+pull(litters_df, gd0_weight)
+
+```
+what if we code `group` as a factor variable?
+```{r}
+litters_df = 
+  read_csv(
+    file = "data_import_examples/FAS_litters.csv",
+    na = c("NA","","."),
+    col_types = cols(
+      Group = col_factor()
+    )
+  )
+```
+
 
