@@ -7,6 +7,8 @@ output: github_document
 ```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
 library(janitor)
+library(readxl)
+library(haven)
 ```
 
 This documnet will show how to import data. 
@@ -69,5 +71,31 @@ litters_df =
     )
   )
 ```
+
+## Import an excel file
+
+import MLB 2011 summary data
+```{r}
+mlb_df = read_excel("data_import_examples/mlb11.xlsx", sheet = "mlb11")
+
+```
+
+## Import SAS data
+```{r}
+pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
+```
+
+## Never use read.csv()
+```{r}
+litters_df = read.csv("")
+litters_df$L
+```
+## Never do this either: 
+should not take stuff out. 
+```{r}
+litters_df$`Litter Number`
+
+```
+
 
 

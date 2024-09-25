@@ -105,3 +105,17 @@ litters_df =
     )
   )
 ```
+
+## Import an excel file
+
+import MLB 2011 summary data
+
+``` r
+mlb_df = read_excel("data_import_examples/mlb11.xlsx", sheet = "mlb11")
+```
+
+## Import SAS data
+
+``` r
+pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
+```
